@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "HashTableChaining.h"
 
 // La clase HashSet hereda públicamente de HashTableChaining
@@ -11,8 +10,9 @@ public:
     // El constructor de HashSet simplemente llama al constructor de la clase base.
     HashSet(unsigned int size) : HashTableChaining<T>(size) {}
 
-    // Sobrescribimos el método Add para que no permita duplicados.
-    void Add(T element)
+    // Sobrescribimos el método Add y usamos la palabra clave 'override'.
+    // AQUI ESTA LA CORRECION
+    void Add(T element) override
     {
         // Antes de agregar, verificamos si el elemento ya existe en el set.
         if (!this->Contains(element))
@@ -28,4 +28,3 @@ public:
         }
     }
 };
-
