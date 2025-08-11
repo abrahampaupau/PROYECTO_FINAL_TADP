@@ -236,6 +236,7 @@ public:
 
 	void Delete(T value)
 	{
+		// AQUI ESTA EL ERROR Y CORRECCION
 		// Corroboramos que existe un nodo con el valor dado.
 		TreeNode<T>* nodeToDelete = SearchRecursive(root, value);
 
