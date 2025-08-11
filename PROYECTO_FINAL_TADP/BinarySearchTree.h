@@ -77,8 +77,15 @@ public:
 
 	}
 
+	// AQUI ESTA LA CORRECCION AL ADD Y ADDRECURSIVE
 	void AddRecursive(T value, TreeNode<T>* currentNode)
 	{
+		// Si el valor ya existe, salimos sin hacer nada.
+		if (value == currentNode->data)
+		{
+			cout << "El valor " << value << " ya existe en el arbol. No se agregara." << endl;
+			return;
+		}
 
 		// si value es mayor que el data de currentNode
 		if (value > currentNode->data)
@@ -97,7 +104,7 @@ public:
 				return AddRecursive(value, currentNode->rightChild);
 			}
 		}
-		else if (value < currentNode->data) // TODO: aquí hay una trampa que veremos pronto.
+		else if (value < currentNode->data)
 		{
 			// entonces nos vamos a su izquierda.
 			// checamos si ese hijo de la izquierda es nullptr.
@@ -113,9 +120,9 @@ public:
 				return AddRecursive(value, currentNode->leftChild);
 			}
 		}
-
 	}
 
+	// AQUI ESTA LA CORRECCION AL ADD Y ADDRECURSIVE
 	void Add(T value)
 	{
 		// primero checamos si root es nullptr.
@@ -133,6 +140,13 @@ public:
 		// necesitamos un ciclo que dure hasta que lleguemos a un nodo nullptr
 		while (currentNode != nullptr) // mientras que nuestro nodo actual siga siendo válido, continua el ciclo.
 		{
+			// Si el valor ya existe, salimos sin hacer nada.
+			if (value == currentNode->data)
+			{
+				cout << "El valor " << value << " ya existe en el arbol. No se agregara." << endl;
+				return;
+			}
+
 			// el ciclo consiste en el proceso de navegar a través de hijos izquierdos y derechos
 
 			// si value es mayor que el data de currentNode
@@ -151,7 +165,7 @@ public:
 					currentNode = currentNode->rightChild;
 				}
 			}
-			else if (value < currentNode->data) // TODO: aquí hay una trampa que veremos pronto.
+			else if (value < currentNode->data)
 			{
 				// entonces nos vamos a su izquierda.
 				// checamos si ese hijo de la izquierda es nullptr.
@@ -234,9 +248,9 @@ public:
 	}
 
 
+	// AQUI ESTA EL ERROR Y CORRECCION EN LA LOGICA DE RECONECTAR PUNTEROS
 	void Delete(T value)
 	{
-		// AQUI ESTA EL ERROR Y CORRECCION
 		// Corroboramos que existe un nodo con el valor dado.
 		TreeNode<T>* nodeToDelete = SearchRecursive(root, value);
 
